@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="utf-8"><title>Tesla 授权回调</title></head>
+<body>
+<h2>授权回调</h2>
+<p id="msg">正在读取授权码……</p>
+<p>请把浏览器地址栏的完整链接发回给助手，授权码只用一次、很快过期。</p>
+<script>
+var p = new URLSearchParams(location.search);
+var code = p.get("code");
+var err = p.get("error");
+var el = document.getElementById("msg");
+if (code) { el.textContent = "授权码：" + code; }
+else if (err) { el.textContent = "授权失败：" + err; }
+else { el.textContent = "链接里没有授权码，请重新走授权流程。"; }
+</script>
+</body>
+</html>
